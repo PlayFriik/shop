@@ -1,0 +1,49 @@
+@using Microsoft.EntityFrameworkCore
+@model WebApp.Areas.Admin.Models.UserRoles.IndexViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.Raw("User")
+            </th>
+            <th>
+                @Html.Raw("Role")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var appUser in Model.Users)
+    {
+        @foreach (var appRoleName in await Model.UserManager.GetRolesAsync(appUser))
+        {
+            <tr>
+                <td>
+                    @Html.Raw(appUser.Email)
+                </td>
+                <td>
+                    @Html.Raw(appRoleName)
+                </td>
+                <td>
+                    @{
+                        var appRole = await Model.RoleManager.Roles.FirstOrDefaultAsync(appRole => appRole.Name.Equals(appRoleName));
+                        <a asp-action="Details" asp-route-userId="@appUser.Id" asp-route-roleId="@appRole.Id">Details</a>
+                        <text> |</text>
+                        <a asp-action="Delete" asp-route-userId="@appUser.Id" asp-route-roleId="@appRole.Id">Delete</a>
+                    }
+                </td>
+            </tr>
+        }
+    }
+    </tbody>
+</table>

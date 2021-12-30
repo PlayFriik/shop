@@ -1,0 +1,291 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <ProjectReference Include="..\Base.Extensions\Base.Extensions.csproj" />
+        <ProjectReference Include="..\Base.Resources\Base.Resources.csproj" />
+        <ProjectReference Include="..\WebApp.API\WebApp.API.csproj" />
+        <ProjectReference Include="..\WebApp.BLL\WebApp.BLL.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.0.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.1">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.1" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <_ContentIncludedByDefault Remove="Views\Categories\Create.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Categories\Delete.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Categories\Details.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Categories\Edit.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Categories\Index.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Locations\Create.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Locations\Delete.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Locations\Details.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Locations\Edit.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Locations\Index.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\OrderProducts\Create.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\OrderProducts\Delete.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\OrderProducts\Details.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\OrderProducts\Edit.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\OrderProducts\Index.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Orders\Create.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Orders\Delete.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Orders\Details.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Orders\Edit.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Orders\Index.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Pictures\Create.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Pictures\Delete.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Pictures\Details.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Pictures\Edit.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Pictures\Index.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Products\Create.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Products\Delete.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Products\Details.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Products\Edit.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Products\Index.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Providers\Create.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Providers\Delete.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Providers\Details.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Providers\Edit.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Providers\Index.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Statuses\Create.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Statuses\Delete.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Statuses\Details.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Statuses\Edit.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Statuses\Index.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Transactions\Create.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Transactions\Delete.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Transactions\Details.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Transactions\Edit.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Transactions\Index.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\UserRoles\Create.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\UserRoles\Delete.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\UserRoles\Details.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\UserRoles\Edit.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\UserRoles\Index.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Users\Create.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Users\Delete.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Users\Details.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Users\Edit.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Users\Index.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Admin\Views\UserRoles\Create.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Admin\Views\UserRoles\Delete.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Admin\Views\UserRoles\Details.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Admin\Views\UserRoles\Edit.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Admin\Views\UserRoles\Index.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Admin\Views\Roles\Create.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Admin\Views\Roles\Delete.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Admin\Views\Roles\Details.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Admin\Views\Roles\Edit.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Admin\Views\Roles\Index.cshtml" />
+        <_ContentIncludedByDefault Remove="wwwroot\Products\Pictures\6c6de0be-2f2f-4cea-ad52-08d91540e66f\640x800_23a6fedb-b5a3-4d5e-a3b9-365e8a3a9458.jpg" />
+        <_ContentIncludedByDefault Remove="wwwroot\Products\Pictures\6c6de0be-2f2f-4cea-ad52-08d91540e66f\1.jpg" />
+        <_ContentIncludedByDefault Remove="wwwroot\Products\Pictures\6c6de0be-2f2f-4cea-ad52-08d91540e66f\2.jpg" />
+        <_ContentIncludedByDefault Remove="wwwroot\Products\Pictures\6c6de0be-2f2f-4cea-ad52-08d91540e66f\MK-kleeps.png" />
+        <_ContentIncludedByDefault Remove="wwwroot\Products\Pictures\ef346d8c-ddeb-47f5-6af1-08d9161e4fc1\3.jpg" />
+        <_ContentIncludedByDefault Remove="wwwroot\Products\Pictures\ef346d8c-ddeb-47f5-6af1-08d9161e4fc1\märt-koik-kruus-no-homo-2-3.jpg" />
+        <_ContentIncludedByDefault Remove="Views\Cart\Index.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Basket\Index.cshtml" />
+        <_ContentIncludedByDefault Remove="wwwroot\Products\Pictures\00000000-0000-0000-0000-000000000000\MK-kleeps.png" />
+        <_ContentIncludedByDefault Remove="wwwroot\Products\Pictures\0a37e4e5-a413-4028-92bb-08d91b1585f1\MK-kleeps.png" />
+        <_ContentIncludedByDefault Remove="wwwroot\Products\Pictures\28995d69-f22e-4547-7ab5-08d9197be41b\MK-kruus-1.jpg" />
+        <_ContentIncludedByDefault Remove="wwwroot\Products\Pictures\28995d69-f22e-4547-7ab5-08d9197be41b\MK-kruus-2.jpg" />
+        <_ContentIncludedByDefault Remove="wwwroot\Products\Pictures\28995d69-f22e-4547-7ab5-08d9197be41b\MK-kruus-3.jpg" />
+        <_ContentIncludedByDefault Remove="wwwroot\Products\Pictures\76670a28-38ac-4310-7ab6-08d9197be41b\MK-kleeps.png" />
+        <_ContentIncludedByDefault Remove="wwwroot\Products\Pictures\e0ea4696-e913-4ebd-d05a-08d91a159504\märt-koik-nokats-1-6.jpg" />
+        <_ContentIncludedByDefault Remove="wwwroot\Products\Pictures\ef346d8c-ddeb-47f5-6af1-08d9161e4fc1\MK-kleeps.png" />
+        <_ContentIncludedByDefault Remove="wwwroot\Products\Pictures\f4f7ec41-000c-4316-a740-08d91a23de64\MK-kruus-1.jpg" />
+        <_ContentIncludedByDefault Remove="wwwroot\Products\Pictures\f4f7ec41-000c-4316-a740-08d91a23de64\MK-kruus-2.jpg" />
+        <_ContentIncludedByDefault Remove="wwwroot\assets\arrow-left-circle-fill.svg" />
+        <_ContentIncludedByDefault Remove="wwwroot\assets\arrow-right-circle-fill.svg" />
+        <_ContentIncludedByDefault Remove="wwwroot\assets\minus-circle-fill.svg" />
+        <_ContentIncludedByDefault Remove="wwwroot\assets\placeholder.png" />
+        <_ContentIncludedByDefault Remove="wwwroot\assets\plus-circle-fill.svg" />
+        <_ContentIncludedByDefault Remove="wwwroot\assets\shopping-cart.svg" />
+        <_ContentIncludedByDefault Remove="wwwroot\assets\x-circle-fill.svg" />
+        <_ContentIncludedByDefault Remove="wwwroot\css\site.css" />
+        <_ContentIncludedByDefault Remove="wwwroot\favicon.ico" />
+        <_ContentIncludedByDefault Remove="wwwroot\js\site.js" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap.css" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap.css.map" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.js.map" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\LICENSE" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\jquery-validation\dist\additional-methods.js" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\jquery-validation\dist\additional-methods.min.js" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\jquery-validation\dist\jquery.validate.js" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\jquery-validation\dist\jquery.validate.min.js" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\jquery-validation\LICENSE.md" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\jquery\dist\jquery.js" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\jquery\dist\jquery.min.js" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\jquery\dist\jquery.min.map" />
+        <_ContentIncludedByDefault Remove="wwwroot\lib\jquery\LICENSE.txt" />
+        <_ContentIncludedByDefault Remove="Areas\Admin\Views\Users\Details.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Admin\Views\Users\Edit.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Admin\Views\Users\Index.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Admin\Views\_ViewImports.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Admin\Views\_ViewStart.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\AccessDenied.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\ConfirmEmail.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\ConfirmEmailChange.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\ExternalLogin.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\ForgotPassword.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\ForgotPasswordConfirmation.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\Lockout.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\Login.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\LoginWith2fa.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\LoginWithRecoveryCode.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\Logout.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\Manage\ChangePassword.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\Manage\DeletePersonalData.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\Manage\Disable2fa.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\Manage\DownloadPersonalData.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\Manage\Email.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\Manage\EnableAuthenticator.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\Manage\ExternalLogins.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\Manage\GenerateRecoveryCodes.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\Manage\Index.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\Manage\PersonalData.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\Manage\ResetAuthenticator.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\Manage\SetPassword.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\Manage\ShowRecoveryCodes.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\Manage\TwoFactorAuthentication.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\Manage\_Layout.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\Manage\_ManageNav.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\Manage\_StatusMessage.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\Manage\_ViewImports.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\Register.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\RegisterConfirmation.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\ResendEmailConfirmation.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\ResetPassword.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\ResetPasswordConfirmation.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\_StatusMessage.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\_ViewImports.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Error.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\_ValidationScriptsPartial.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\_ViewImports.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\_ViewStart.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <UpToDateCheckInput Remove="Views\Statuses\Create.cshtml" />
+        <UpToDateCheckInput Remove="Views\Statuses\Delete.cshtml" />
+        <UpToDateCheckInput Remove="Views\Statuses\Details.cshtml" />
+        <UpToDateCheckInput Remove="Views\Statuses\Edit.cshtml" />
+        <UpToDateCheckInput Remove="Views\Statuses\Index.cshtml" />
+        <UpToDateCheckInput Remove="Views\Pictures\Create.cshtml" />
+        <UpToDateCheckInput Remove="Views\Pictures\Delete.cshtml" />
+        <UpToDateCheckInput Remove="Views\Pictures\Details.cshtml" />
+        <UpToDateCheckInput Remove="Views\Pictures\Edit.cshtml" />
+        <UpToDateCheckInput Remove="Views\Pictures\Index.cshtml" />
+        <UpToDateCheckInput Remove="Views\Categories\Create.cshtml" />
+        <UpToDateCheckInput Remove="Views\Categories\Delete.cshtml" />
+        <UpToDateCheckInput Remove="Views\Categories\Details.cshtml" />
+        <UpToDateCheckInput Remove="Views\Categories\Edit.cshtml" />
+        <UpToDateCheckInput Remove="Views\Categories\Index.cshtml" />
+        <UpToDateCheckInput Remove="Views\Locations\Create.cshtml" />
+        <UpToDateCheckInput Remove="Views\Locations\Delete.cshtml" />
+        <UpToDateCheckInput Remove="Views\Locations\Details.cshtml" />
+        <UpToDateCheckInput Remove="Views\Locations\Edit.cshtml" />
+        <UpToDateCheckInput Remove="Views\Locations\Index.cshtml" />
+        <UpToDateCheckInput Remove="Views\Orders\Create.cshtml" />
+        <UpToDateCheckInput Remove="Views\Orders\Delete.cshtml" />
+        <UpToDateCheckInput Remove="Views\Orders\Details.cshtml" />
+        <UpToDateCheckInput Remove="Views\Orders\Edit.cshtml" />
+        <UpToDateCheckInput Remove="Views\Orders\Index.cshtml" />
+        <UpToDateCheckInput Remove="Areas\Admin\Views\UserRoles\Create.cshtml" />
+        <UpToDateCheckInput Remove="Areas\Admin\Views\UserRoles\Delete.cshtml" />
+        <UpToDateCheckInput Remove="Areas\Admin\Views\UserRoles\Details.cshtml" />
+        <UpToDateCheckInput Remove="Areas\Admin\Views\UserRoles\Edit.cshtml" />
+        <UpToDateCheckInput Remove="Areas\Admin\Views\UserRoles\Index.cshtml" />
+        <UpToDateCheckInput Remove="Views\Statuses\Create.cshtml" />
+        <UpToDateCheckInput Remove="Views\Statuses\Delete.cshtml" />
+        <UpToDateCheckInput Remove="Views\Statuses\Details.cshtml" />
+        <UpToDateCheckInput Remove="Views\Statuses\Edit.cshtml" />
+        <UpToDateCheckInput Remove="Views\Statuses\Index.cshtml" />
+        <UpToDateCheckInput Remove="Areas\Admin\Views\Roles\Create.cshtml" />
+        <UpToDateCheckInput Remove="Areas\Admin\Views\Roles\Delete.cshtml" />
+        <UpToDateCheckInput Remove="Areas\Admin\Views\Roles\Details.cshtml" />
+        <UpToDateCheckInput Remove="Areas\Admin\Views\Roles\Edit.cshtml" />
+        <UpToDateCheckInput Remove="Areas\Admin\Views\Roles\Index.cshtml" />
+        <UpToDateCheckInput Remove="Areas\Admin\Views\UserRoles\Create.cshtml" />
+        <UpToDateCheckInput Remove="Areas\Admin\Views\UserRoles\Delete.cshtml" />
+        <UpToDateCheckInput Remove="Areas\Admin\Views\UserRoles\Details.cshtml" />
+        <UpToDateCheckInput Remove="Areas\Admin\Views\UserRoles\Index.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="app.db">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="wwwroot\assets\seeding" />
+    </ItemGroup>
+
+</Project>

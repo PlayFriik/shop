@@ -1,0 +1,47 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using WebApp.Domain.Identity
+@inject SignInManager<AppUser> _signInManager
+@inject UserManager<AppUser> _userManager
+
+@if (_signInManager.IsSignedIn(User))
+{
+    var user = await _userManager.GetUserAsync(User);
+    <li class="nav-item dropdown">
+        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown">
+            @user.FullName
+        </button>
+        <ul class="dropdown-menu">
+            <li><a asp-area="Identity" asp-page="/Account/Manage/Index" class="dropdown-item text-dark">@Base.Resources.WebApp.Views.Shared._LoginPartial.Manage</a></li>
+            <li><a asp-area="" asp-action="Index" asp-controller="Orders" class="dropdown-item text-dark">@WebApp.Resources.WebApp.Views.Shared._LoginPartial.Orders</a></li>
+            @if (User.IsInRole("Admin"))
+            {
+                <hr class="m-2"/>
+                <li><a class="dropdown-item text-dark" asp-area="" asp-action="Index" asp-controller="Categories">@WebApp.Resources.WebApp.Views.Shared._LoginPartial.Categories</a></li>
+                <li><a class="dropdown-item text-dark" asp-area="" asp-action="Index" asp-controller="Locations">@WebApp.Resources.WebApp.Views.Shared._LoginPartial.Locations</a></li>
+                <li><a class="dropdown-item text-dark" asp-area="" asp-action="Index" asp-controller="OrderProducts">@WebApp.Resources.WebApp.Views.Shared._LoginPartial.OrderProducts</a></li>
+                <li><a class="dropdown-item text-dark" asp-area="" asp-action="Index" asp-controller="Pictures">@WebApp.Resources.WebApp.Views.Shared._LoginPartial.Pictures</a></li>
+                <li><a class="dropdown-item text-dark" asp-area="" asp-action="Index" asp-controller="Providers">@WebApp.Resources.WebApp.Views.Shared._LoginPartial.Providers</a></li>
+                <li><a class="dropdown-item text-dark" asp-area="" asp-action="Index" asp-controller="Statuses">@WebApp.Resources.WebApp.Views.Shared._LoginPartial.Statuses</a></li>
+                <li><a class="dropdown-item text-dark" asp-area="" asp-action="Index" asp-controller="Transactions">@WebApp.Resources.WebApp.Views.Shared._LoginPartial.Transactions</a></li>
+                <hr class="m-2"/>
+                <li><a class="dropdown-item text-dark" asp-area="Admin" asp-action="Index" asp-controller="Roles">@WebApp.Resources.WebApp.Views.Shared._LoginPartial.Roles</a></li>
+                <li><a class="dropdown-item text-dark" asp-area="Admin" asp-action="Index" asp-controller="Users">@WebApp.Resources.WebApp.Views.Shared._LoginPartial.Users</a></li>
+                <li><a class="dropdown-item text-dark" asp-area="Admin" asp-action="Index" asp-controller="UserRoles">@WebApp.Resources.WebApp.Views.Shared._LoginPartial.UserRoles</a></li>
+            }
+        </ul>
+    </li>
+    <li class="nav-item">
+        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new {area = ""})">
+            <button type="submit" class="nav-link btn btn-link text-dark">@Base.Resources.WebApp.Views.Shared._LoginPartial.Logout</button>
+        </form>
+    </li>
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">@Base.Resources.WebApp.Views.Shared._LoginPartial.Register</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">@Base.Resources.WebApp.Views.Shared._LoginPartial.Login</a>
+    </li>
+}

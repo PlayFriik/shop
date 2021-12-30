@@ -1,0 +1,125 @@
+@model WebApp.BLL.DTO.Order
+
+@{
+    ViewData["Title"] = WebApp.Resources.WebApp.Views.Orders.Details.Order;
+}
+
+<section class="banner gradient pb-4 pt-4">
+    <div class="row g-0">
+        <div class="col-2"></div>
+        <div class="col-8 text-center">
+            <h3 class="fw-light m-auto" id="order">@WebApp.Resources.WebApp.Views.Orders.Details.Order.ToUpper() #@Model.Id</h3>
+        </div>
+        <div class="col-2 pe-4">
+            @if (User.IsInRole("Admin"))
+            {
+                <a asp-action="Delete" asp-controller="Orders" asp-route-id="@Model.Id" class="btn btn-light float-end">❌</a>
+                <a asp-action="Edit" asp-controller="Orders" asp-route-id="@Model.Id" class="btn btn-light float-end me-2">✏️</a>
+            }
+            else if (User.IsInRole("Seller"))
+            {
+                <a asp-action="Edit" asp-controller="Orders" asp-route-id="@Model.Id" class="btn btn-light float-end">✏️</a>
+            }
+        </div>
+    </div>
+</section>
+<br/>
+
+<div class="row g-0 text-center">
+    <h4 class="fw-light mb-3">@WebApp.Resources.WebApp.Views.Orders.Details.Recipient</h4>
+</div>
+<div class="col mb-5 text-center">
+    @WebApp.Resources.WebApp.Views.Orders.Details.Name: @Model.AppUser!.FullName
+    <br />
+    @WebApp.Resources.WebApp.Views.Orders.Details.Phone: @Model.AppUser!.PhoneNumber
+</div>
+
+<div class="row g-0 text-center mb-2 mt-2">
+    <h4 class="fw-light mb-4">@WebApp.Resources.WebApp.Views.Orders.Details.Cart</h4>
+</div>
+<table class="table">
+    <thead>
+    <tr class="d-flex">
+        <th class="col-6">@WebApp.Resources.WebApp.Views.Orders.Details.Product</th>
+        <th class="col-2 text-center">@WebApp.Resources.WebApp.Views.Orders.Details.Quantity</th>
+        <th class="col-2 text-center">@WebApp.Resources.WebApp.Views.Orders.Details.Price</th>
+        <th class="col-2 text-center">@WebApp.Resources.WebApp.Views.Orders.Details.Total</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var orderProduct in Model.OrderProducts!)
+    {
+        <tr class="d-flex">
+            <td class="col-6">@orderProduct.Product!.Name</td>
+            <td class="col-2 form-inline justify-content-center text-center">
+                <span class="ms-2 me-2">@orderProduct.Quantity</span>
+            </td>
+            <td class="col-2 text-center">@orderProduct.Product!.Price.ToString("0.00")€</td>
+            <td class="col-2 text-center">@((orderProduct.Quantity * orderProduct.Product!.Price).ToString("0.00"))€</td>
+        </tr>
+    }
+    <tr class="d-flex">
+        <td class="col-6">
+            <strong>@WebApp.Resources.WebApp.Views.Orders.Details.Shipping (@Model.Location!.Provider!.Name @Model.Location!.Name)</strong>
+        </td>
+        <td class="col-2"></td>
+        <td class="col-2"></td>
+        <td class="col-2 text-center">@Model.Location!.Provider!.Price.ToString("0.00")€</td>
+    </tr>
+    <tr class="d-flex">
+        <td class="col-6">
+            <strong>@WebApp.Resources.WebApp.Views.Orders.Details.Total</strong>
+        </td>
+        <td class="col-2"></td>
+        <td class="col-2"></td>
+        <td class="col-2 text-center">@Model.Total.ToString("0.00")€</td>
+    </tr>
+    </tbody>
+</table>
+<br/>
+
+<div class="row g-0 text-center mb-2">
+    <h4 class="fw-light mb-4">@WebApp.Resources.WebApp.Views.Orders.Details.Transactions</h4>
+</div>
+<table class="table">
+    <thead>
+    <tr class="d-flex">
+        <th class="col-10">@WebApp.Resources.WebApp.Views.Orders.Details.Order</th>
+        <th class="col-2 text-center">@WebApp.Resources.WebApp.Views.Orders.Details.Amount</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var transaction in Model.Transactions!)
+    {
+        <tr class="d-flex">
+            <td class="col-10">#@transaction.OrderId</td>
+            <td class="col-2 text-center">@transaction.Amount.ToString("0.00")€</td>
+        </tr>
+    }
+    <tr class="d-flex">
+        <td class="col-10">
+            <strong>@WebApp.Resources.WebApp.Views.Orders.Details.Total</strong>
+        </td>
+        <td class="col-2 text-center">@Model.Transactions.Sum(transaction => transaction.Amount).ToString("0.00")€</td>
+    </tr>
+    </tbody>
+</table>
+<br/>
+
+@if (Model.Tracking != null)
+{
+    <div class="row g-0 mb-2">
+        <h4 class="fw-light ms-auto me-auto mb-4">@WebApp.Resources.WebApp.Views.Orders.Details.Tracking</h4>
+    </div>
+    <div class="col mb-5 text-center">
+        @if (Uri.IsWellFormedUriString(Model.Tracking, UriKind.Absolute))
+        {
+            <a href="@Model.Tracking">@Model.Tracking</a>
+        }
+        else
+        {
+            @Model.Tracking
+        }
+    </div>
+    <br/>
+}

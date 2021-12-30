@@ -1,0 +1,29 @@
+﻿<root>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="Payment" xml:space="preserve">
+        <value>Makse</value>
+    </data>
+    <data name="PaymentFailed" xml:space="preserve">
+        <value>Makse ebaõnnestus!</value>
+    </data>
+    <data name="UnfortunatelyYourPaymentFailed" xml:space="preserve">
+        <value>Kahjuks teie makse ebaõnnestus ja teie tellimust ei esitatud!</value>
+    </data>
+    <data name="IfYouThinkThisIsAnError" xml:space="preserve">
+        <value>Kui arvate, et see on viga, võtke meiega ühendust.</value>
+    </data>
+    <data name="GoToHomepage" xml:space="preserve">
+        <value>Mine avalehele</value>
+    </data>
+</root>

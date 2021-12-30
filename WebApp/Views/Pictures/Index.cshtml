@@ -1,0 +1,34 @@
+﻿@model IEnumerable<WebApp.BLL.DTO.Picture>
+
+@{
+    ViewData["Title"] = WebApp.Resources.WebApp.Views.Pictures.Index.Title;
+}
+
+<h1>@WebApp.Resources.WebApp.Views.Pictures.Index.Title</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @WebApp.Resources.WebApp.Views.Pictures.Index.Product
+            </th>
+            <th>
+                @WebApp.Resources.WebApp.Views.Pictures.Index.Path
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product!.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Path)
+            </td>
+            <td></td>
+        </tr>
+}
+    </tbody>
+</table>

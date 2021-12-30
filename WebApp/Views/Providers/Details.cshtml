@@ -1,0 +1,30 @@
+@model WebApp.BLL.DTO.Provider
+
+@{
+    ViewData["Title"] = WebApp.Resources.WebApp.Views.Providers.Details.Title;
+}
+
+<h1>@WebApp.Resources.WebApp.Views.Providers.Details.Title</h1>
+
+<div>
+    <h4>@WebApp.Resources.WebApp.Views.Providers.Details.Provider</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @WebApp.Resources.WebApp.Views.Providers.Details.Name
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.Name
+        </dd>
+        <dt class = "col-sm-2">
+            @WebApp.Resources.WebApp.Views.Providers.Details.Price
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.Price.ToString("0.00")
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">@WebApp.Resources.WebApp.Views.Providers.Details.Edit</a> |
+    <a asp-action="Index">@WebApp.Resources.WebApp.Views.Providers.Details.BackToList</a>
+</div>

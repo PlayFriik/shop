@@ -1,0 +1,183 @@
+@model WebApp.Models.Products.Index
+
+@{
+    ViewData["Title"] = WebApp.Resources.WebApp.Views.Products.Index.Products;
+}
+
+<section class="banner gradient pb-4 pt-4">
+    <div class="row g-0">
+        <div class="col-2"></div>
+        <div class="col-8 text-center">
+            <h3 class="fw-light m-auto">@WebApp.Resources.WebApp.Views.Products.Index.Products.ToUpper()</h3>
+        </div>
+        <div class="col-2">
+            @if (User.IsInRole("Admin") || User.IsInRole("Seller"))
+            {
+                <a asp-controller="Products" asp-action="Create" class="btn btn-light float-end me-4">➕</a>
+            }
+        </div>
+    </div>
+</section>
+<br/>
+
+<div class="row">
+    <div class="col-2">
+        <h5>
+            @WebApp.Resources.WebApp.Views.Products.Index.Category
+            @if (Model.CategoryId != null)
+            {
+                @if (Model.SortBy != null)
+                {
+                    <a class="fw-light text-decoration-none" asp-action="Index" asp-route-sortBy="@Model.SortBy">(@WebApp.Resources.WebApp.Views.Products.Index.Clear.ToLower())</a>
+                }
+                else
+                {
+                    <a class="fw-light text-decoration-none" asp-action="Index">(@WebApp.Resources.WebApp.Views.Products.Index.Clear.ToLower())</a>
+                }
+            }
+        </h5>
+        @if (Model.Categories.Count == 0)
+        {
+            <h6>@WebApp.Resources.WebApp.Views.Products.Index.CategoriesNotFound</h6>
+        }
+        else
+        {
+            @foreach (var category in Model.Categories.OrderBy(category => category.Name))
+            {
+                @if (Model.SortBy != null)
+                {
+                    <a class="@(Model.CategoryId == category.Id ? "font-italic text-decoration-none" : "text-decoration-none")" asp-action="Index" asp-route-category="@category.Id" asp-route-sortBy="@Model.SortBy">@category.Name</a>
+                }
+                else
+                {
+                    <a class="@(Model.CategoryId == category.Id ? "font-italic text-decoration-none" : "text-decoration-none")" asp-action="Index" asp-route-category="@category.Id">@category.Name</a>
+                }
+                <br/>
+            }
+        }
+    </div>
+    <div class="col-10 row">
+        <div class="g-0 mb-3">
+            <select class="form-select w-auto float-end" id="sortBy">
+                <option value="" selected="@(Model.SortBy == null)">@WebApp.Resources.WebApp.Views.Products.Index.SortBy...</option>
+                <option value="best-sellers" selected="@(Model.SortBy == "best-sellers")">@WebApp.Resources.WebApp.Views.Products.Index.SortByBestSellers</option>
+                <option value="title-ascending" selected="@(Model.SortBy == "title-ascending")">@WebApp.Resources.WebApp.Views.Products.Index.SortByAlphabeticallyAZ</option>
+                <option value="title-descending" selected="@(Model.SortBy == "title-descending")">@WebApp.Resources.WebApp.Views.Products.Index.SortByAlphabeticallyZA</option>
+                <option value="price-ascending" selected="@(Model.SortBy == "price-ascending")">@WebApp.Resources.WebApp.Views.Products.Index.SortByPriceLH</option>
+                <option value="price-descending" selected="@(Model.SortBy == "price-descending")">@WebApp.Resources.WebApp.Views.Products.Index.SortByPriceHL</option>
+            </select>
+        </div>
+
+        <div class="text-center">
+            @if (Model.Products.Count == 0)
+            {
+                <h6>@WebApp.Resources.WebApp.Views.Products.Index.ProductsNotFound</h6>
+            }
+            else
+            {
+                <div class="d-flex flex-wrap justify-content-between">
+                    @foreach (var product in Model.Products)
+                    {
+                        <div class="card mb-5" style="width: 12.5rem;">
+                            <img src="@(product.Pictures!.Count >= 1 ? product.Pictures!.First().Path : "/assets/placeholder.png")" class="p-2 card-img-top" alt=""/>
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">
+                                    <a asp-action="Details" asp-route-id="@product.Id" class="stretched-link text-dark text-decoration-none">@product.Name</a>
+                                </h5>
+                                <p class="card-text mt-auto">@product.Price.ToString("0.00")€</p>
+                                @if (product.Quantity >= 1)
+                                {
+                                    <form asp-action="AddEntry" asp-controller="Cart">
+                                        <input type="hidden" name="ProductId" value="@(product.Id)" />
+                                        <input type="hidden" name="ProductName" value="@(product.Name)" />
+                                        <input type="hidden" name="ProductPrice" value="@(product.Price)" />
+                                        <input type="hidden" name="ProductQuantity" value="@(product.Quantity)" />
+                                        <input type="hidden" name="Quantity" value="1" />
+                                        <input type="hidden" name="Total" value="@(product.Price)" />
+
+                                        <input class="btn btn-dark form-control" style="position: relative; z-index: 1000;" type="submit" value="@WebApp.Resources.WebApp.Views.Products.Index.AddToCart" />
+                                    </form>
+                                }
+                                else
+                                {
+                                    <input class="btn btn-danger form-control" style="position: relative; z-index: 1000;" type="button" value="@WebApp.Resources.WebApp.Views.Products.Index.OutOfStock" />
+                                }
+                            </div>
+                        </div>
+                    }
+
+                    @if (Model.Products.Count % 4 != 0)
+                    {
+                        for (var i = 0; i < 4 - Model.Products.Count % 4; i++)
+                        {
+                            <div style="width: 12.5rem;"></div>
+                        }
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        const addEntry = async (element) => {
+            const response = await fetch('@(Url.Action("AddEntry", "Cart"))', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    'ProductId': element.dataset.productId,
+                    'ProductName': element.dataset.productName,
+                    'ProductPrice': parseFloat(element.dataset.productPrice),
+                    'ProductQuantity': parseInt(element.dataset.productQuantity),
+                    'Quantity': parseInt(element.dataset.quantity),
+                    'Total': parseFloat(element.dataset.productPrice) * parseInt(element.dataset.quantity)
+                })
+            });
+            
+            if (!response.ok) {
+                return;
+            }
+
+            const cartElement = document.getElementById('cart');
+            if (cartElement === null) {
+                return;
+            }
+
+            const result = await response.json();
+            if (result === null) {
+                return;
+            }
+
+            if (result.entries.length >= 1) {
+                cartElement.innerText = '@WebApp.Resources.WebApp.Views.Shared._CartPartial.Cart (' + result.entries.length + ')';
+            } else {
+                cartElement.innerText = '@WebApp.Resources.WebApp.Views.Shared._CartPartial.Cart';
+            }
+        }
+
+        let sortByElement = document.getElementById("sortBy");
+        sortByElement.addEventListener("change", () => {
+            let pathName = document.location.pathname;
+            let category = "";
+            let sortBy = "";
+
+            if ('@Model.CategoryId' !== "") {
+                category += "?category=" + '@Model.CategoryId';
+            }
+
+            if (sortByElement.value !== "") {
+                if (category !== "") {
+                    sortBy += "&sortBy=" + sortByElement.value;
+                } else {
+                    sortBy += "?sortBy=" + sortByElement.value;
+                }
+            }
+
+            document.location.href = pathName + category + sortBy;
+        });
+    </script>
+}

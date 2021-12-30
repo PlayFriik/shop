@@ -1,0 +1,60 @@
+@model IEnumerable<WebApp.BLL.DTO.Order>
+
+@{
+    ViewData["Title"] = WebApp.Resources.WebApp.Views.Orders.Index.Title;
+}
+
+<section class="banner gradient pb-4 pt-4">
+    <div class="row g-0">
+        <div class="col-2"></div>
+        <div class="col-8 text-center">
+            <h3 class="fw-light m-auto">@WebApp.Resources.WebApp.Views.Orders.Index.Title.ToUpper()</h3>
+        </div>
+        <div class="col-2">
+            @if (User.IsInRole("Admin"))
+            {
+                <a asp-controller="Orders" asp-action="Create" class="btn btn-light float-end me-4">➕</a>
+            }
+        </div>
+    </div>
+</section>
+<br/>
+
+<table class="table">
+    <thead>
+        <tr class="d-flex">
+            <th class="col-4">
+                @WebApp.Resources.WebApp.Views.Orders.Index.Order
+            </th>
+            <th class="col-4 text-center">
+                @WebApp.Resources.WebApp.Views.Orders.Index.Date
+            </th>
+            <th class="col-2 text-center">
+                @WebApp.Resources.WebApp.Views.Orders.Index.Status
+            </th>
+            <th class="col-2 text-center">
+                @WebApp.Resources.WebApp.Views.Orders.Index.Total
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var order in Model) {
+        <tr class="d-flex">
+            <td class="col-4">
+                <a asp-area="" asp-controller="Orders" asp-action="Details" asp-route-id="@order.Id">
+                    #@order.Id
+                </a>
+            </td>
+            <td class="col-4 text-center">
+                @order.DateTime
+            </td>
+            <td class="col-2 text-center">
+                @order.Status!.Name
+            </td>
+            <td class="col-2 text-center">
+                @order.Total.ToString("0.00")€
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

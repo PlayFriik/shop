@@ -1,0 +1,47 @@
+@model IEnumerable<WebApp.BLL.DTO.Location>
+
+@{
+    ViewData["Title"] = WebApp.Resources.WebApp.Views.Locations.Index.Title;
+}
+
+<h1>@WebApp.Resources.WebApp.Views.Locations.Index.Title</h1>
+
+<p>
+    <a asp-action="Create">@WebApp.Resources.WebApp.Views.Locations.Index.Create</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @WebApp.Resources.WebApp.Views.Locations.Index.Provider
+            </th>
+            <th>
+                @WebApp.Resources.WebApp.Views.Locations.Index.Name
+            </th>
+            <th>
+                @WebApp.Resources.WebApp.Views.Locations.Index.Address
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Provider!.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">@WebApp.Resources.WebApp.Views.Locations.Index.Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">@WebApp.Resources.WebApp.Views.Locations.Index.Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">@WebApp.Resources.WebApp.Views.Locations.Index.Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

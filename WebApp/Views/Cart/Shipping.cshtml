@@ -1,0 +1,83 @@
+@model WebApp.Models.Cart.Shipping
+
+@{
+    ViewData["Title"] = WebApp.Resources.WebApp.Views.Cart.Shipping.Title;
+}
+
+<section class="banner gradient pb-4 pt-4">
+    <div class="container">
+        <div class="row text-center">
+            <h3 class="fw-light m-auto">@WebApp.Resources.WebApp.Views.Cart.Shipping.Title.ToUpper()</h3>
+        </div>
+    </div>
+</section>
+<br/>
+
+<div class="row g-0">
+    <div class="col-5"></div>
+    <div class="col-2 text-center">
+        <form asp-action="SetShipping" id="shipping-form">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="row-auto">
+                <label asp-for="ProviderId" class="control-label">@WebApp.Resources.WebApp.Views.Cart.Shipping.Provider</label>
+                <select asp-for="ProviderId" asp-items="Model.Providers" class="form-control" onchange="getLocations()">
+                    <option value="@Guid.Empty">@WebApp.Resources.WebApp.Views.Cart.Shipping.Choose...</option>
+                </select>
+                <span asp-validation-for="ProviderId" class="text-danger"></span>
+            </div>
+            <div class="row-auto mt-2">
+                <label asp-for="LocationId" class="control-label">@WebApp.Resources.WebApp.Views.Cart.Shipping.Location</label>
+                <select asp-for="LocationId" class="form-control">
+                    <option value="@Guid.Empty">@WebApp.Resources.WebApp.Views.Cart.Shipping.Choose...</option>
+                </select>
+                <span asp-validation-for="LocationId" class="text-danger"></span>
+            </div>
+            <div class="row-auto">
+                <input class="btn btn-dark mt-3" type="submit" value="@WebApp.Resources.WebApp.Views.Cart.Shipping.GoToCheckout"/>
+            </div>
+        </form>
+    </div>
+    <div class="col-5"></div>
+</div>
+<br/>
+
+@section Scripts
+{
+    <script>
+        const getLocations = () => {
+            let providersElement = document.querySelector('#ProviderId');
+            if (providersElement === null) {
+                return;
+            }
+
+            let locationsElement = document.querySelector('#LocationId');
+            if (locationsElement === null) {
+                return;
+            }
+
+            for (let i = locationsElement.options.length - 1; i >= 0; i--) {
+                if (i <= 0) {
+                    break;
+                }
+
+                locationsElement.options.remove(i);
+            }
+
+            fetch('/api/v1/Locations?providerId=' + providersElement.value)
+                .then(response =>
+                    response.json()
+                ).then(result => {
+                    let option;
+
+                    for (let i = 0; i < result.length; i++) {
+                        option = document.createElement('option');
+                        option.text = result[i].name;
+                        option.value = result[i].id;
+
+                        locationsElement.add(option);
+                    }
+                });
+        }
+    </script>
+}

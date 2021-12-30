@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = WebApp.Resources.WebApp.Views.Checkout.Failure.Payment;
+}
+
+<section class="banner gradient pb-4 pt-4">
+    <div class="container">
+        <div class="row text-center">
+            <h3 class="fw-light m-auto">@WebApp.Resources.WebApp.Views.Checkout.Failure.Payment.ToUpper()</h3>
+        </div>
+    </div>
+</section>
+<br/>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto mt-5">
+            <div class="content text-center">
+                <h3>@WebApp.Resources.WebApp.Views.Checkout.Failure.PaymentFailed</h3>
+                <h5>@WebApp.Resources.WebApp.Views.Checkout.Failure.UnfortunatelyYourPaymentFailed</h5>
+                <h5>@WebApp.Resources.WebApp.Views.Checkout.Failure.IfYouThinkThisIsAnError</h5>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="btn btn-dark mt-4">@WebApp.Resources.WebApp.Views.Checkout.Failure.GoToHomepage</a>
+            </div>
+        </div>
+    </div>
+</div>

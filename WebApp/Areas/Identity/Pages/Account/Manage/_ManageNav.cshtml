@@ -1,0 +1,16 @@
+@using WebApp.Domain.Identity
+@inject SignInManager<AppUser> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+<ul class="nav nav-pills flex-column">
+    <li class="nav-item"><a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">@Base.Resources.WebApp.Areas.Identity.Pages.Account.Manage._ManageNav.Profile</a></li>
+    <li class="nav-item"><a class="nav-link @ManageNavPages.EmailNavClass(ViewContext)" id="email" asp-page="./Email">@Base.Resources.WebApp.Areas.Identity.Pages.Account.Manage._ManageNav.Email</a></li>
+    <li class="nav-item"><a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">@Base.Resources.WebApp.Areas.Identity.Pages.Account.Manage._ManageNav.Password</a></li>
+    @if (hasExternalLogins)
+    {
+        <li id="external-logins" class="nav-item"><a id="external-login" class="nav-link @ManageNavPages.ExternalLoginsNavClass(ViewContext)" asp-page="./ExternalLogins">@Base.Resources.WebApp.Areas.Identity.Pages.Account.Manage._ManageNav.External_logins</a></li>
+    }
+    <li class="nav-item"><a class="nav-link @ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext)" id="two-factor" asp-page="./TwoFactorAuthentication">@Base.Resources.WebApp.Areas.Identity.Pages.Account.Manage._ManageNav.Two_factor_authentication</a></li>
+    <li class="nav-item"><a class="nav-link @ManageNavPages.PersonalDataNavClass(ViewContext)" id="personal-data" asp-page="./PersonalData">@Base.Resources.WebApp.Areas.Identity.Pages.Account.Manage._ManageNav.Personal_data</a></li>
+</ul>
