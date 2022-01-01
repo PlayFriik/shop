@@ -74,7 +74,10 @@ builder.Services
     {
         var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-        options.UseSqlServer(connectionString);
+        options.UseSqlServer(connectionString, sqlServerOptions =>
+        {
+            sqlServerOptions.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery);
+        });
     });
 
 builder.Services

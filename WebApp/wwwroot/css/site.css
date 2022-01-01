@@ -57,13 +57,13 @@ body {
 }
 
 .banner-image {
-    height: 50%;
-    width: 50%;
+    height: 15rem;
+    width: 15rem;
     object-fit: cover;
 }
 
 .card-image {
-    height: auto;
+    height: 12.5rem;
     width: 100%;
     object-fit: cover;
 }
