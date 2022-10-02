@@ -2,14 +2,173 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Base.Resources\Base.Resources.csproj" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="6.0.1" />
+      <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.15.0" />
+      <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.15.0" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="6.0.1" />
+      <EmbeddedResource Update="Resources\WebApp\Areas\Identity\IdentityErrorDescriber\LocalizedIdentityErrorDescriber.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>LocalizedIdentityErrorDescriber.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\WebApp\Areas\Identity\Pages\Account\Manage\ChangePassword.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>ChangePassword.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\WebApp\Areas\Identity\Pages\Account\Manage\DeletePersonalData.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>DeletePersonalData.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\WebApp\Areas\Identity\Pages\Account\Manage\Disable2fa.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>Disable2fa.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\WebApp\Areas\Identity\Pages\Account\Manage\DownloadPersonalData.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>DownloadPersonalData.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\WebApp\Areas\Identity\Pages\Account\Manage\Email.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>Email.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\WebApp\Areas\Identity\Pages\Account\Manage\EnableAuthenticator.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>EnableAuthenticator.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\WebApp\Areas\Identity\Pages\Account\Manage\ExternalLogins.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>ExternalLogins.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\WebApp\Areas\Identity\Pages\Account\Manage\GenerateRecoveryCodes.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>GenerateRecoveryCodes.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\WebApp\Areas\Identity\Pages\Account\Manage\Index.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>Index.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\WebApp\Areas\Identity\Pages\Account\Manage\PersonalData.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>PersonalData.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\WebApp\Areas\Identity\Pages\Account\Manage\ResetAuthenticator.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>ResetAuthenticator.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\WebApp\Areas\Identity\Pages\Account\Manage\SetPassword.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>SetPassword.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\WebApp\Areas\Identity\Pages\Account\Manage\ShowRecoveryCodes.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>ShowRecoveryCodes.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\WebApp\Areas\Identity\Pages\Account\Manage\TwoFactorAuthentication.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>TwoFactorAuthentication.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\WebApp\Areas\Identity\Pages\Account\Manage\_Layout.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>_Layout.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\WebApp\Areas\Identity\Pages\Account\Manage\_ManageNav.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>_ManageNav.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\WebApp\Areas\Identity\Pages\Account\AccessDenied.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>AccessDenied.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\WebApp\Areas\Identity\Pages\Account\ConfirmEmail.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>ConfirmEmail.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\WebApp\Areas\Identity\Pages\Account\ConfirmEmailChange.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>ConfirmEmailChange.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\WebApp\Areas\Identity\Pages\Account\ExternalLogin.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>ExternalLogin.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\WebApp\Areas\Identity\Pages\Account\ForgotPassword.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>ForgotPassword.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\WebApp\Areas\Identity\Pages\Account\ForgotPasswordConfirmation.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>ForgotPasswordConfirmation.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\WebApp\Areas\Identity\Pages\Account\Lockout.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>Lockout.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\WebApp\Areas\Identity\Pages\Account\Login.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>Login.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\WebApp\Areas\Identity\Pages\Account\LoginWith2fa.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>LoginWith2fa.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\WebApp\Areas\Identity\Pages\Account\LoginWithRecoveryCode.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>LoginWithRecoveryCode.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\WebApp\Areas\Identity\Pages\Account\Logout.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>Logout.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\WebApp\Areas\Identity\Pages\Account\Register.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>Register.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\WebApp\Areas\Identity\Pages\Account\RegisterConfirmation.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>RegisterConfirmation.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\WebApp\Areas\Identity\Pages\Account\ResendEmailConfirmation.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>ResendEmailConfirmation.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\WebApp\Areas\Identity\Pages\Account\ResetPassword.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>ResetPassword.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\WebApp\Areas\Identity\Pages\Account\ResetPasswordConfirmation.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>ResetPasswordConfirmation.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\WebApp\Areas\Identity\Shared\PasswordRequirementsTooltip.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>PasswordRequirementsTooltip.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\WebApp\Views\Shared\_LanguagePartial.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>_LanguagePartial.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\WebApp\Views\Shared\_LoginPartial.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>_LoginPartial.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Common.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>Common.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Resources\Common.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Common.resx</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>
